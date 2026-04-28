@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>RECADINHOS DO CONCETTA</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="js.js" defer></script>
+    </head>
+    <body>
+        <div class="escreva">
+            <form id="formcadastro">
+                <label for="nome">NOME:</label>
+                <input type="text" maxlength="25" id="nome" name="nome" placeholder="Digite seu Nome">
+                <label for="text">MENSAGEM:</label>
+                <textarea id="text" maxlength="150" name="text" placeholder="Escreva aqui uma linda mensagem!"></textarea>
+<br>
+                <button type="button" onclick="enviardados()">GRAVAR MENSAGEM</button>
+            </form>
+        </div>
+        <div id="receberecados">
+        </div>
+    </body>
+</html>

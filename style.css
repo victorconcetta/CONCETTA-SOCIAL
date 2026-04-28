@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;      /* MUDOU: de height para min-height */
+    height: auto;
+    background-color: rgb(77, 0, 98);
+    padding-bottom: 50px;
+}
+.escreva{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(222, 226, 255);
+    padding: 10px;
+}
+.recadinhos{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    height: auto;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(222, 226, 255);
+    padding: 10px;
+    bottom: 20px;
+}
+.recadinhos p{
+    top: 0px;
+    padding: 0px;
+    margin: 0px;
+    bottom: 0px;
+    left: 10px;
+}
+#receberecados{
+    flex-direction: column;
+    padding-top: 20px;
+    display: flex;
+    gap: 20px
+}
+.nome{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    height: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    margin-left: 10px;
+}
+.textodorecado{
+  display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    padding: 5px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 0px 10px;
+    border: none;
+}
+textarea{
+    width: 90%;
+    height: 200px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border: none;
+   resize: none;
+}
+input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    resize: none;
+    width: 50%;
+    border-radius: 90px;
+    padding: 0 10px;
+    border: none;
+  
+}
+label{
+    font-family: verdana;
+    color: blueviolet;
+    font-weight: 300;
+    padding: 5px;
+    font-size: clamp(10px, 12px, 20px);
+}
+button{
+    font-family: verdana;
+    color: rgb(229, 229, 229);
+    font-weight: 300;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    top: 0px;
+    background: rgb(218, 114, 244);
+    font-size: clamp(10px, 12px, 20px);
+}
