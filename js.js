@@ -41,7 +41,7 @@ async function enviardados() {
 async function carregarMensagens() {
     try {
         // Busca mensagens do servidor do Render
-        const resposta = await fetch(`${API_URL}/api/mensagens`);
+        const resposta = await fetch(`${API_URL}/api/recados`);
         
         if (!resposta.ok) throw new Error('Erro na resposta do servidor');
         
