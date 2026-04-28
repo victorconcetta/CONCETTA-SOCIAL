@@ -28,6 +28,7 @@ body {
     background: rgb(222, 226, 255);
     padding: 10px;
     bottom: 20px;
+    font-size: clamp(20px, 22px, 30px);
 }
 .recadinhos p{
     top: 0px;
@@ -41,6 +42,7 @@ body {
     padding-top: 20px;
     display: flex;
     gap: 20px
+    font-size: clamp(20px, 22px, 30px);
 }
 .nome{
     display: flex;
@@ -52,6 +54,7 @@ body {
     background: rgb(255, 255, 255);
     padding: 5px;
     margin-left: 10px;
+    font-size: clamp(20px, 22px, 30px);
 }
 .textodorecado{
   display: flex;
@@ -82,6 +85,7 @@ textarea{
     padding: 10px 10px;
     border: none;
    resize: none;
+    font-size: clamp(12px, 17px, 30px);
 }
 input{
     display: flex;
@@ -93,6 +97,7 @@ input{
     border-radius: 90px;
     padding: 0 10px;
     border: none;
+    font-size: clamp(14px, 16px, 30px);
   
 }
 label{
