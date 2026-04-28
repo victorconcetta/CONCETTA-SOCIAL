@@ -1,68 +1,52 @@
+// AQUI: Troque pelo link que o Railway te deu (Public Networking)
+const API_URL = 'https://LINK_DO_SEU_APP_AQUI.up.railway.app'; 
+
 async function enviardados() {
     const nome = document.getElementById('nome').value;
     const text = document.getElementById('text').value;
 
     if (!nome || !text) {
-        alert("Por favor, preencha o nome e a mensagem!");
+        alert("Preencha tudo!");
         return;
     }
 
-    const dados = { nome, text };
-
     try {
-        const resposta = await fetch('http://localhost:3000/cadastrar', {
+        const resposta = await fetch(`${API_URL}/cadastrar`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dados)
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, text })
         });
-
         const resultado = await resposta.text();
         alert(resultado);
-
-        // Limpa os campos após enviar
+        
         document.getElementById('nome').value = '';
         document.getElementById('text').value = '';
-
-        // Atualiza a lista de recados automaticamente
         carregarMensagens();
-
     } catch (erro) {
-        console.error('Erro ao enviar:', erro);
-        alert('Erro ao conectar com o servidor.');
+        console.error('Erro:', erro);
     }
 }
 
 async function carregarMensagens() {
     try {
-        const resposta = await fetch('http://localhost:3000/api/mensagens');
+        const resposta = await fetch(`${API_URL}/api/mensagens`);
         const mensagens = await resposta.json();
-
-        const containerPrincipal = document.getElementById('receberecados');
-        
-        // Limpa o container para não acumular lixo
-        containerPrincipal.innerHTML = '';
+        const container = document.getElementById('receberecados');
+        container.innerHTML = '';
 
         mensagens.forEach(msg => {
-            // Criamos a div do recado na hora
-            const blocoRecado = document.createElement('div');
-            
-            // Adicionamos a classe que tem o seu estilo (borda, fundo azul, etc)
-            blocoRecado.classList.add('recadinhos'); 
-
-            // Injetamos o conteúdo com os dados que vieram do banco
-            blocoRecado.innerHTML = `
+            const bloco = document.createElement('div');
+            bloco.classList.add('recadinhos'); 
+            bloco.innerHTML = `
                 <p>De:</p>
                 <div class="nome">${msg.nome}</div>
                 <div class="textodorecado">${msg.text}</div>
             `;
-
-            // Colocamos o novo recado dentro do container principal
-            containerPrincipal.appendChild(blocoRecado);
+            container.appendChild(bloco);
         });
     } catch (erro) {
-        console.error("Erro ao buscar dados:", erro);
+        console.error("Erro ao buscar:", erro);
     }
 }
+
 document.addEventListener('DOMContentLoaded', carregarMensagens);
