@@ -1,5 +1,5 @@
-// O seu link oficial do Railway!
-const API_URL = 'https://concetta-social-production.up.railway.app'; 
+// O seu link oficial do Render!
+const API_URL = 'https://concetta-social.onrender.com'; 
 
 async function enviardados() {
     const nome = document.getElementById('nome').value;
@@ -13,7 +13,7 @@ async function enviardados() {
     const dados = { nome, text };
 
     try {
-        // Envia para o servidor do Railway
+        // Envia para o servidor do Render
         const resposta = await fetch(`${API_URL}/cadastrar`, {
             method: 'POST',
             headers: {
@@ -29,18 +29,18 @@ async function enviardados() {
         document.getElementById('nome').value = '';
         document.getElementById('text').value = '';
 
-        // Atualiza a lista
+        // Atualiza a lista automaticamente
         carregarMensagens();
 
     } catch (erro) {
         console.error('Erro ao enviar:', erro);
-        alert('Erro ao conectar com o servidor do Railway.');
+        alert('Erro ao conectar com o servidor do Render.');
     }
 }
 
 async function carregarMensagens() {
     try {
-        // Busca mensagens do servidor do Railway
+        // Busca mensagens do servidor do Render
         const resposta = await fetch(`${API_URL}/api/mensagens`);
         
         if (!resposta.ok) throw new Error('Erro na resposta do servidor');
@@ -67,4 +67,5 @@ async function carregarMensagens() {
     }
 }
 
+// Carrega as mensagens assim que a página abrir
 document.addEventListener('DOMContentLoaded', carregarMensagens);
