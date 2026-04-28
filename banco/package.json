@@ -1,13 +1,13 @@
 {
   "name": "concetta-social",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mini rede social do Victor",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Victor Concetta",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
