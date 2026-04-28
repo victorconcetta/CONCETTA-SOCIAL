@@ -1,51 +1,69 @@
-// AQUI: Troque pelo link que o Railway te deu (Public Networking)
-const API_URL = 'https://LINK_DO_SEU_APP_AQUI.up.railway.app'; 
+// O seu link oficial do Railway!
+const API_URL = 'https://concetta-social-production.up.railway.app'; 
 
 async function enviardados() {
     const nome = document.getElementById('nome').value;
     const text = document.getElementById('text').value;
 
     if (!nome || !text) {
-        alert("Preencha tudo!");
+        alert("Por favor, preencha o nome e a mensagem!");
         return;
     }
 
+    const dados = { nome, text };
+
     try {
+        // Envia para o servidor do Railway
         const resposta = await fetch(`${API_URL}/cadastrar`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nome, text })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
         });
+
         const resultado = await resposta.text();
         alert(resultado);
-        
+
+        // Limpa os campos
         document.getElementById('nome').value = '';
         document.getElementById('text').value = '';
+
+        // Atualiza a lista
         carregarMensagens();
+
     } catch (erro) {
-        console.error('Erro:', erro);
+        console.error('Erro ao enviar:', erro);
+        alert('Erro ao conectar com o servidor do Railway.');
     }
 }
 
 async function carregarMensagens() {
     try {
+        // Busca mensagens do servidor do Railway
         const resposta = await fetch(`${API_URL}/api/mensagens`);
+        
+        if (!resposta.ok) throw new Error('Erro na resposta do servidor');
+        
         const mensagens = await resposta.json();
-        const container = document.getElementById('receberecados');
-        container.innerHTML = '';
+        const containerPrincipal = document.getElementById('receberecados');
+        
+        containerPrincipal.innerHTML = '';
 
         mensagens.forEach(msg => {
-            const bloco = document.createElement('div');
-            bloco.classList.add('recadinhos'); 
-            bloco.innerHTML = `
+            const blocoRecado = document.createElement('div');
+            blocoRecado.classList.add('recadinhos'); 
+
+            blocoRecado.innerHTML = `
                 <p>De:</p>
                 <div class="nome">${msg.nome}</div>
                 <div class="textodorecado">${msg.text}</div>
             `;
-            container.appendChild(bloco);
+
+            containerPrincipal.appendChild(blocoRecado);
         });
     } catch (erro) {
-        console.error("Erro ao buscar:", erro);
+        console.error("Erro ao buscar dados:", erro);
     }
 }
 
